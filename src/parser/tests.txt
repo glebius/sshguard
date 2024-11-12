@@ -1,3 +1,16 @@
+#### TCP Wrappers
+refused connect from 1.2.3.4 (1.2.3.4)
+10 1.2.3.4 4 10
+M
+refused connect from 1.2.3.4 (sample.com)
+10 1.2.3.4 4 10
+M
+refused connect from 2001:db8::a11:beef:7ac1 (2001:db8::a11:beef:7ac1)
+10 2001:db8::a11:beef:7ac1 6 10
+M
+refused connect from 2001:db8::a11:beef:7ac1 (sample.com)
+10 2001:db8::a11:beef:7ac1 6 10
+M
 #### SSH
 Invalid user inexu from 6.6.6.0
 100 6.6.6.0 4 10

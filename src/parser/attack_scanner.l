@@ -344,6 +344,9 @@ HTTP_LOGIN_200OK_BAD       .*({WORDPRESS_LOGIN}|{TYPO3_LOGIN}|{CONTAO_LOGIN}).*
 "Login failed. The login is from an untrusted domain and cannot be used with Integrated authentication. [CLIENT: " { return MSSQL_AUTHFAIL_PREF; }
 "Length specified in network packet payload did not match number of bytes read; the connection has been closed. Please contact the vendor of the client library. [CLIENT: " { return MSSQL_AUTHFAIL_PREF; }
 
+ /* TCP Wrappers */
+"refused connect from " { return LIBWRAP_REFUSE; }
+
  /**         COMMON-USE TOKENS       do not touch these          **/
  /* an IPv4 address */
 {IPV4}                                                          { yylval.str = yytext; return IPv4; }

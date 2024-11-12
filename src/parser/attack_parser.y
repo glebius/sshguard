@@ -119,6 +119,8 @@ static void yyerror(attack_t *, const char *);
 %token OPENVPN_PS_TERM_SUFF
 /* MSSQL */
 %token MSSQL_AUTHFAIL_PREF
+/* TCP Wrappers */
+%token LIBWRAP_REFUSE
 
 %%
 
@@ -195,6 +197,7 @@ msg_single:
   | giteamsg          { attack->service = SERVICES_GITEA; }
   | openvpnpsmsg      { attack->service = SERVICES_OPENVPN_PS; }
   | sqlservrmsg       { attack->service = SERVICES_MSSQL; }
+  | libwrapmsg        { attack->service = SERVICES_LIBWRAP; }
   ;
 
 /* an address */
@@ -388,6 +391,12 @@ sqlservrmsg:
 openvpnpsmsg:
     OPENVPN_PS_TERM_PREF addr OPENVPN_PS_TERM_SUFF
   | OPENVPN_PS_TERM_PREF '[' addr ']' OPENVPN_PS_TERM_SUFF
+  ;
+
+libwrapmsg:
+    LIBWRAP_REFUSE addr '(' IPv4 ')'
+  | LIBWRAP_REFUSE addr '(' IPv6 ')'
+  | LIBWRAP_REFUSE addr '(' HOSTADDR ')'
   ;
 
 %%
